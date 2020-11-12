@@ -12,6 +12,7 @@ app
 .post("/createRoom",(request,response)=>{
     
     if(request.body.availableSeats==undefined||request.body.ameneties==undefined||request.body.perHourRate==undefined){response.status(400).json({status:"fail: invalid schema"});return;}
+    if(typeof request.body.availableSeats!="number"||typeof request.body.ameneties!="string"||typeof request.body.perHourRate!="number"){response.status(400).json({status:"fail: invalid schema"});return;}
     fs.readFile("roomsData.json",(err,data)=>{
         roomData=JSON.parse(data)
  roomData.push({roomID:roomData.length,availableSeats : request.body.availableSeats,ameneties: request.body.ameneties, perHourRate:request.body.perHourRate})
@@ -28,7 +29,8 @@ app
         bookingData=JSON.parse(data)
         
         if(request.body.roomID==undefined||request.body.startTime==undefined||request.body.endTime==undefined||request.body.customerName==undefined){response.status(400).json({status:"fail: invalid schema"});return;}
-
+        if(typeof request.body.roomID!="number"||typeof request.body.startTime!="number"||typeof request.body.endTime!="number"||typeof request.body.customerName!="string"){response.status(400).json({status:"fail: invalid schema"});return;}
+ 
         let startDateObj = new Date(request.body.date.split("-")[2],request.body.date.split("-")[1],request.body.date.split("-")[0],request.body.startTime/100,request.body.startTime%100)
         let endDateObj = new Date(request.body.date.split("-")[2],request.body.date.split("-")[1],request.body.date.split("-")[0],request.body.endTime/100,request.body.endTime%100)
         if(startDateObj=="Invalid Date"||endDateObj=="Invalid Date"){response.status(400).json({status:"fail: invalid date/time"});return;}
