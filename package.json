@@ -1,0 +1,23 @@
+{
+  "name": "room-booking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhirajkulaar/hall-booking.git"
+  },
+  "author": "Abhiraj Singh Kulaar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhirajkulaar/hall-booking/issues"
+  },
+  "homepage": "https://github.com/abhirajkulaar/hall-booking#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "range-overlaps": "^1.0.0"
+  }
+}
