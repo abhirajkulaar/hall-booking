@@ -28,7 +28,7 @@ app
     fs.readFile("bookingData.json",(err,data)=>{
         bookingData=JSON.parse(data)
         
-        if(request.body.roomID==undefined||request.body.startTime==undefined||request.body.endTime==undefined||request.body.customerName==undefined){response.status(400).json({status:"fail: invalid schema"});return;}
+        if(request.body.roomID==undefined||request.body.startTime==undefined||request.body.endTime==undefined||request.body.customerName==undefined||request.body.date==undefined){response.status(400).json({status:"fail: invalid schema"});return;}
         if(typeof request.body.roomID!="number"||typeof request.body.startTime!="number"||typeof request.body.endTime!="number"||typeof request.body.customerName!="string"){response.status(400).json({status:"fail: invalid schema"});return;}
  
         let startDateObj = new Date(request.body.date.split("-")[2],request.body.date.split("-")[1],request.body.date.split("-")[0],request.body.startTime/100,request.body.startTime%100)
